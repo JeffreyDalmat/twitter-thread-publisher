@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Thread Publisher</title>
 </head>
-<body>
-    <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+<body class="main">
+    <header class="has-navbar-fixed-top">
+        <nav class="navbar" role="navigation" aria-label="main navigation" is-fixed-top>
             <div class="navbar-brand">
-              <a class="navbar-item" href="https://bulma.io">
-                <img src="/img/logo.png" width="112" height="28">
+              <a class="navbar-item" href="/">
+                <img src="/img/logo.svg" width="112" height="28">
               </a>
           
               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -26,19 +26,48 @@
           
               <div class="navbar-end">
                 <div class="navbar-item">
-                  <div class="buttons">
                     <% if(!locals.user){ %> 
                     <a href="/login" class="button is-link">
                       <strong>Se connecter</strong>
                     </a>
-                    <% }else{ %> 
-                    <a href="/logout" class="button is-light">
-                        Déconnexion
-                      </a>
+                    <% }else{ %>
+                      <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                          <button class="button is-link is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>@<%= locals.user.screenName %></span>
+                            <span class="icon is-small">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                          <div class="dropdown-content">
+                            <div class="dropdown-item">
+                              <a href="/myaccount">
+                                Mon compte
+                              </a>
+                            </div>
+                            <div class="dropdown-item">
+                              <a href="/logout">
+                                Déconnexion
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>             
                     <% } %> 
-                  </div>
                 </div>
               </div>
             </div>
           </nav>
+          <section class="hero">
+            <div class="hero-body">
+              <p class="title">
+                Thread Publisher
+              </p>
+              <p class="subtitle">
+                Gratuit et simple d'utilisation
+              </p>
+            </div>
+          </section>
     </header>

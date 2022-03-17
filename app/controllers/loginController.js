@@ -51,12 +51,12 @@ const loginController = {
 		});
 
 		try{
-			const {accessToken, accessSecret, username, userId} = await temporaryClient.login(verifier);
+			const {accessToken, accessSecret, screenName, userId} = await temporaryClient.login(verifier);
 
 			req.session.user = {
 				accessToken,
 				accessSecret,
-				username,
+				screenName,
 				userId
 			};
     
@@ -68,7 +68,7 @@ const loginController = {
 		}
 	},
 	dashboard: function(req, res) {
-		res.render('welcome');
+		res.render('dashboard');
 	},
 
 	logout: function(req, res){

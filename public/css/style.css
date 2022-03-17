@@ -5,13 +5,3 @@ body{
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.menu{
-    display: flex;
-    background-color: #a7c1f1;
-    padding: 3em;
-}
-
-.nav{
-    display: flex;
-    
-}
