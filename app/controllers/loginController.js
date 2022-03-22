@@ -59,7 +59,19 @@ const loginController = {
 				screenName,
 				userId
 			};
-    
+
+			const permanentClient = new TwitterApi({
+				appKey: process.env.CONSUMER_KEY,
+				appSecret: process.env.CONSUMER_SECRET,
+				accessToken: req.session.user.accessToken,
+				accessSecret: req.session.user.accessSecret,
+			});
+		
+			const currentUser = await permanentClient.currentUser();
+			
+			req.session.user.currentUser = currentUser;
+			console.log(currentUser);
+
 			res.redirect('/dashboard');
 			next();
 		}
@@ -68,7 +80,14 @@ const loginController = {
 		}
 	},
 	dashboard: function(req, res) {
-		res.render('dashboard');
+
+
+		if(req.session.user){
+			res.render('dashboard');
+		}
+		else{
+			res.redirect('/');
+		}
 	},
 
 	logout: function(req, res){

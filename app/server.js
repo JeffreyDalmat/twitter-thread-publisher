@@ -7,10 +7,11 @@ const path = require('path');
 const session = require('express-session');
 const userMiddleware = require('./middlewares/userMiddleware.js');
 
+
 const server = express();
 const port = process.env.PORT || 3000;
 
-server.use(express.static(path.join(__dirname, '../public')));
+server.use(express.static(path.join(__dirname, '../public/')));
 
 server.set('view engine', 'ejs');
 server.set('views', path.join(__dirname, '../app/views'));
@@ -20,7 +21,7 @@ server.set('trust proxy', 1); // trust first proxy
 server.use(session({
 	secret: process.env.COOKIE_SECRET,
 	cookie: { 
-		maxAge: 3600 * 24 * 7// a week
+		maxAge: null // persistent session
 	} 
 }));
 
