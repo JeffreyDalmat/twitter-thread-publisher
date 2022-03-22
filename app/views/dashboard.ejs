@@ -1,31 +1,83 @@
 <%- include('./partials/header.ejs') %>
 
-<div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
-      <div class="tile">
-        
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-danger is-light">
-          <p class="title">Wide tile</p>
-          <p class="subtitle">Aligned with the right tile</p>
-          <div class="content">
-            <!-- Content -->
-          </div>
-        </article>
-      </div>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-link is-light">
-        <div class="content">
-          <p class="title">Tall tile</p>
-          <p class="subtitle">With even more content</p>
-          <div class="content">
-            <!-- Content -->
-          </div>
+    <!-- Section -->
+    <div class="columns mb-0 mt-0">
+        <div class="column">
+            <div class="tile is-parent">
+                <div class="card">
+                    
+                    <div class="card-content has-background-black-bis">
+                        <div class="media">
+                            <div class="media-center">
+                                <figure class="image is-48x48">
+                                    <img class="is-rounded" src=<%= locals.user.currentUser.profile_image_url_https%>
+                                        alt="Twitter profil image">
+                                </figure>
+                            </div>
+                            <div class="media-content has-text-centered">
+                                <p class="title is-4"><%= locals.user.currentUser.name%></p>
+                                <p class="subtitle is-6"><%= locals.user.currentUser.screen_name%></p>
+                            </div>
+                        </div>
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Tweets</p>
+                                    <p class="title"><%= locals.user.currentUser.statuses_count%></p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Followers</p>
+                                    <p class="title"><%= locals.user.currentUser.followers_count%></p>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="content has-text-centered">
+                            <%= locals.user.currentUser.description%>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </article>
+        <div class="column is-half">
+            <div class="tile is-parent">
+                <article class="tile is-child notification has-background-black-bis	">
+                    <div class="content">
+                        <form method="POST" action="posttweet" class="control">
+                            <div class="content">
+                                <!-- Content -->
+                                <textarea class="textarea is-dark has-fixed-size has-background-black-ter has-text-white"
+                                    type="text" placeholder="Write your thread" rows="5" name="thread"
+                                    autocomplete="off"></textarea>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="field is-grouped is-grouped-right">
+                                <p class="control">
+                                    <button class="button is-info is-outlined">
+                                        Programmer
+                                    </button>
+                                </p>
+                                <p class="control">
+                                    <button class="button is-info">
+                                        Tweeter
+                                    </button>
+                                </p>
+                            </div>
+                        </form>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="column">
+            <div class="tile is-parent">
+                <article class="tile is-child notification has-background-black-bis">
+                    <textarea class="textarea is-dark has-background-black-ter has-text-white has-fixed-size"
+                        placeholder="Your Twitter thread" readonly></textarea>
+                </article>
+            </div>
+        </div>
     </div>
-  </div>
-  
+
 <%- include('./partials/footer.ejs') %>

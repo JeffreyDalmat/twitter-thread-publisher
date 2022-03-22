@@ -1,73 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Thread Publisher</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/mystyles.css">
+  <title>Thread Publisher</title>
 </head>
-<body class="main">
+<body>
+
     <header class="has-navbar-fixed-top">
-        <nav class="navbar" role="navigation" aria-label="main navigation" is-fixed-top>
-            <div class="navbar-brand">
+      <nav class="navbar is-dark py-4" role="navigation" aria-label="main navigation" is-fixed-top>
+          <div class="navbar-brand ml-6">
               <a class="navbar-item" href="/">
-                <img src="/img/logo.svg" width="112" height="28">
+                  <img src="img/logo.svg" width="112" height="28">
               </a>
-          
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                  data-target="navbarBasicExample">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
               </a>
-            </div>
-          
-          
-              <div class="navbar-end">
-                <div class="navbar-item">
-                    <% if(!locals.user){ %> 
-                    <a href="/login" class="button is-link">
-                      <strong>Se connecter</strong>
-                    </a>
-                    <% }else{ %>
-                      <div class="dropdown is-hoverable">
-                        <div class="dropdown-trigger">
-                          <button class="button is-link is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>@<%= locals.user.screenName %></span>
-                            <span class="icon is-small">
-                              <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                          </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                          <div class="dropdown-content">
-                            <div class="dropdown-item">
-                              <a href="/myaccount">
-                                Mon compte
-                              </a>
-                            </div>
-                            <div class="dropdown-item">
-                              <a href="/logout">
-                                Déconnexion
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>             
-                    <% } %> 
-                </div>
+          </div>
+
+
+          <div class="navbar-end">
+            <% if(!locals.user){ %>
+              <div class="navbar-item mr-6">
+                <a href="/login" class="button is-info" id="loginBtn">
+                  <strong>Se connecter</strong>
+                </a>
               </div>
-            </div>
-          </nav>
-          <section class="hero">
-            <div class="hero-body">
-              <p class="title">
-                Thread Publisher
-              </p>
-              <p class="subtitle">
-                Gratuit et simple d'utilisation
-              </p>
-            </div>
-          </section>
-    </header>
+              <% }else{ %>
+              <div class="dropdown is-hoverable navbar-item mr-6">
+                  <div class="dropdown-trigger">
+                      <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu4">
+                          <span><%= locals.user.currentUser.screen_name%></span>
+                      </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                      <div class="dropdown-content">
+                          <a class="dropdown-item" href="/logout">
+                              Déconnexion
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <% } %>
+          </div>
+      </nav>
+
+  </header>
